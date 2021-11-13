@@ -1,12 +1,67 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import React from 'react';
+import {
+  BrowserRouter as Router, Route, Switch
+} from "react-router-dom";
+import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import AllDataContext from './Context/AllDataContext';
+import Admin from './Pages/Admin/Admin';
+import Pay from './Pages/Admin/Pay';
+import Footer from './Pages/Footer/Footer';
+// import AddProduct from './Pages/AdminPage/AddProduct/AddProduct';
+// import Admin from './Pages/AdminPage/Admin/Admin';
+// import Pay from './Pages/AdminPage/Admin/Pay';
+import Home from './Pages/HomePage/Home';
+import Login from './Pages/Login/Login';
+import PrivateRoute from './Pages/Login/PrivateRoute ';
+import MoreProduct from './Pages/MoreProduct/MoreProduct';
+import Register from './Pages/Register/Register';
+import Headers from './Share/Header/Header';
+import Order from './Share/Header/Order/Order';
+import NotFound from "./Pages/WeOffer/NotFound"
+
+const App = () => {
   return (
-    <div className="App">
-        <h1>OK EVERYTHING</h1>
+    <div>
+      <AllDataContext>
+        <Router>
+          <Headers />
+        <Switch>
+          <Route exact path='/'>
+            <Home />
+          </Route>
+          <Route path='/home'>
+            <Home />
+          </Route>
+          <Route path='/pay'>
+            <Pay />
+          </Route>
+          <PrivateRoute path='/product/:id'>
+            <Order />
+          </PrivateRoute>
+         
+          <PrivateRoute path='/admin'>
+            <Admin />
+          </PrivateRoute>
+          <Route path='/login'>
+            <Login />
+          </Route>
+          <Route path='/register'>
+            <Register />
+          </Route>
+          <Route path='/productAll'>
+            <MoreProduct />
+          </Route>
+          <Route path='*'>
+            <NotFound />
+          </Route>
+          </Switch>
+          <Footer />
+      </Router>
+      </AllDataContext>
+      
     </div>
   );
-}
+};
 
 export default App;

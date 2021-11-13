@@ -1,0 +1,17 @@
+.form-style {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 2px 10px;
+}
+.label {
+  font-size: 20px;
+
+  margin-top: 10px;
+  margin-bottom: 5px;
+}

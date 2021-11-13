@@ -1,0 +1,16 @@
+.my-link {
+  margin: 0 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Oswald", sans-serif;
+  color: rgba(0, 253, 135, 0.596);
+  transition: 0.3s all linear;
+}
+.my-link:hover {
+  color: crimson;
+}
+.my-navber {
+  box-shadow: 5px 0px 16px crimson;
+}
