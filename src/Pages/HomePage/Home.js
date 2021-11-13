@@ -6,6 +6,8 @@ import Contact from '../Contact/Contact';
 import './Home.css'
 import Review from './Home/Review';
 import Product from './Product/Product';
+import image1 from '../../image/banner7-1.jpg'
+import image2 from '../../image/banner7-12.jpg'
 
 const Home = () => {
     const [review, setReview] = useState([])
@@ -20,11 +22,11 @@ const Home = () => {
         <div>
             <Carousel fade>
                 <Carousel.Item className="car-effect" >
-                    {/* <img
+                    <img
                         className="carousel-img d-block w-100"
-                        src={"http://demo.roadthemes.com/james/wp-content/uploads/2015/12/banner7-1.jpg"}
+                        src={image1}
                         alt="First slide"
-                    /> */}
+                    />
                     <Carousel.Caption className="car-middle" >
                         <h3 className="title-car">Sale products </h3>
                         <h1 className="title-carousel"> NIKE ARI MAX 2021 </h1>
@@ -32,11 +34,11 @@ const Home = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className="car-effect" >
-                    {/* <img
+                    <img
                         className="carousel-img d-block w-100"
-                        src={"http://demo.roadthemes.com/james/wp-content/uploads/2015/12/banner7-12.jpg"}
+                        src={image2}
                         alt="Second slide"
-                    /> */}
+                    />
 
                     <Carousel.Caption className="car-middle" >
                         <h3 className="title-car">Sale products </h3>
