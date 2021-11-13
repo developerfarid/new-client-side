@@ -20,11 +20,11 @@ const Home = () => {
         <div>
             <Carousel fade>
                 <Carousel.Item className="car-effect" >
-                    <img
+                    {/* <img
                         className="carousel-img d-block w-100"
                         src={"http://demo.roadthemes.com/james/wp-content/uploads/2015/12/banner7-1.jpg"}
                         alt="First slide"
-                    />
+                    /> */}
                     <Carousel.Caption className="car-middle" >
                         <h3 className="title-car">Sale products </h3>
                         <h1 className="title-carousel"> NIKE ARI MAX 2021 </h1>
@@ -32,11 +32,11 @@ const Home = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className="car-effect" >
-                    <img
+                    {/* <img
                         className="carousel-img d-block w-100"
                         src={"http://demo.roadthemes.com/james/wp-content/uploads/2015/12/banner7-12.jpg"}
                         alt="Second slide"
-                    />
+                    /> */}
 
                     <Carousel.Caption className="car-middle" >
                         <h3 className="title-car">Sale products </h3>
