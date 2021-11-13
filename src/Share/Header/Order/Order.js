@@ -24,7 +24,7 @@ const Order = () => {
 
     const { register, handleSubmit, reset, errors } = useForm(); // initialize the hook
     useEffect(() => {
-        fetch(`http://localhost:5000/product/${id}`).then(res => res.json()).then(dataProduct => setPd(dataProduct))
+        fetch(`https://afternoon-bayou-21114.herokuapp.com/product/${id}`).then(res => res.json()).then(dataProduct => setPd(dataProduct))
     }, [])
     const onSubmit = (data) => {
         const success = () => {
@@ -40,7 +40,7 @@ const Order = () => {
         data.displayName= pd?.displayName    
 
    
-            axios.post("http://localhost:5000/order", data)
+            axios.post("https://afternoon-bayou-21114.herokuapp.com/order", data)
             .then(response => {
                 if (response.data.insertedId) {
                     success()

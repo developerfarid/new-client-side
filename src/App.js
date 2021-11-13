@@ -33,9 +33,9 @@ const App = () => {
           <Route path='/home'>
             <Home />
           </Route>
-          <Route path='/pay'>
+          <PrivateRoute path='/pay'>
             <Pay />
-          </Route>
+          </PrivateRoute>
           <PrivateRoute path='/product/:id'>
             <Order />
           </PrivateRoute>

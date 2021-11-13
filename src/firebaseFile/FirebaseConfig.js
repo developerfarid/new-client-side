@@ -5,12 +5,11 @@ const firebaseConfig = {
     // storageBucket:process.env.REACT_APP_STORAGEBUCKET, 
     // messagingSenderId:process.env.REACT_APP_MESSAGINGSENDERID,  
     // appId: process.env.REACT_APP_APPID
-    
-  apiKey: "AIzaSyC4EjR8ae2yGIYIKk9D1ASTsZ4OFcvOtBo",
-  authDomain: "assinments11.firebaseapp.com",
-  projectId: "assinments11",
-  storageBucket: "assinments11.appspot.com",
-  messagingSenderId: "795226730088",
-  appId: "1:795226730088:web:9569c56767cd2ff21e55dd"
+    apiKey: "AIzaSyBWX5LrMFXJVI_huPlQPMdbUf_3Mm8PEa4",
+  authDomain: "newassinment.firebaseapp.com",
+  projectId: "newassinment",
+  storageBucket: "newassinment.appspot.com",
+  messagingSenderId: "804522168657",
+  appId: "1:804522168657:web:4909abdcb7e623af030370"
 };
 export default firebaseConfig;

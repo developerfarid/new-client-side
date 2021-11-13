@@ -76,7 +76,7 @@ const [loding, setLoding]= useState(true)
         const user = {
          email, displayName
         }
-        fetch("http://localhost:5000/users", {
+        fetch("https://afternoon-bayou-21114.herokuapp.com/users", {
             method: type,
             "headers": {
                 "content-type":"application/json"
@@ -176,16 +176,16 @@ const [loding, setLoding]= useState(true)
         }
 
         useEffect(() => {
-            fetch("http://localhost:5000/product").then(res => res.json()).then(data => setProduct(data))
+            fetch("https://afternoon-bayou-21114.herokuapp.com/product").then(res => res.json()).then(data => setProduct(data))
         }, [])
         useEffect(() => {
-            fetch("http://localhost:5000/productAll").then(res => res.json()).then(data => setProductAll(data))
+            fetch("https://afternoon-bayou-21114.herokuapp.com/productAll").then(res => res.json()).then(data => setProductAll(data))
         }, [])
         useEffect(() => {
-            fetch("http://localhost:5000/order").then(res => res.json()).then(data => setOrderAll(data))
+            fetch("https://afternoon-bayou-21114.herokuapp.com/order").then(res => res.json()).then(data => setOrderAll(data))
         }, [])
         useEffect(() => {
-            fetch(`http://localhost:5000/order/${user?.email}`).then(res => res.json()).then(data => setOrder(data))
+            fetch(`https://afternoon-bayou-21114.herokuapp.com/order/${user?.email}`).then(res => res.json()).then(data => setOrder(data))
         }, [order])
 
         return {

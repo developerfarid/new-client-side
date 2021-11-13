@@ -26,7 +26,7 @@ const Footer = () => {
     }
     
     const onSubmit = data => {
-        axios.post("http://localhost:5000/newsLetter", data)
+        axios.post("https://afternoon-bayou-21114.herokuapp.com/newsLetter", data)
             .then(res => {
             if (res.data.insertedId) {
                 messageDone()

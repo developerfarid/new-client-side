@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 const Product = ({ pd }) => {
     const element = <FontAwesomeIcon icon={faStar} />
     const element2 = <FontAwesomeIcon icon={Star} />
-    const { title, price, url, url2, rating, type,_id, des } = pd
+    const { title, price, url, rating,_id, des } = pd
 
     return (
         <Col className="my-3">

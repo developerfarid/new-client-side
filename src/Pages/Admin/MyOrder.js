@@ -23,7 +23,7 @@ const MyOrder = () => {
           })
     }
     const handleUpdate = (id) => {
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://afternoon-bayou-21114.herokuapp.com/order/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -32,7 +32,7 @@ const MyOrder = () => {
         })
             .then(ress=> ress.json())
             .then(res => {
-                fetch(`http://localhost:5000/order`)
+                fetch(`https://afternoon-bayou-21114.herokuapp.com/order`)
                 .then(res => res.json())
                     .then(data => {
                         setOrder(data)
@@ -55,7 +55,7 @@ const MyOrder = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
               if (result.isConfirmed) {
-                fetch(`http://localhost:5000/order/${id}`, {
+                fetch(`https://afternoon-bayou-21114.herokuapp.com/order/${id}`, {
                     method:"DELETE"
                 })
                     .then(ress=> ress.json())

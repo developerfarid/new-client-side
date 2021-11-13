@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import UseAuth from '../../Hooks/UseAuth';
 import AddProduct from './AddProduct';
 import AddReview from './AddReview';
+import AdminRoute from './AdminRoute';
 import AllProduct from './AllProduct';
 import MakeAdmin from './MakeAdmin';
 import MyOrder from './MyOrder';
@@ -17,13 +18,12 @@ const Admin = () => {
   const [admin, setAdmin] = useState([])
   console.log(admin.role);
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user.email}`)
+    fetch(`https://afternoon-bayou-21114.herokuapp.com/users/${user.email}`)
       .then(res => res.json())
       .then(data => setAdmin(data[0]))
   }, [])
   return (
-    <div>
-      <h2>Topics</h2>
+    <div className="mt-5">
       <Row>
         <Col xs={12} md={3}>
           <ul className="list-unstyled ml-4">
@@ -51,17 +51,17 @@ const Admin = () => {
         <Col xs={12} md={9}>
           <Switch>
             <Route exact path={path}>
-              <AddProduct />
+              <MyOrder />
             </Route>
-            <Route path={`${path}/makeAdmin`}>
+            <AdminRoute path={`${path}/makeAdmin`}>
               <MakeAdmin />
-            </Route>
-            <Route path={`${path}/order`}>
+            </AdminRoute>
+            <AdminRoute path={`${path}/order`}>
               <AllProduct />
-            </Route>
-            <Route path={`${path}/product`}>
+            </AdminRoute>
+            <AdminRoute path={`${path}/product`}>
               <AddProduct />
-            </Route>
+            </AdminRoute>
             <Route path={`${path}/myOrder`}>
               <MyOrder />
             </Route>

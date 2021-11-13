@@ -11,7 +11,7 @@ const Home = () => {
     const [review, setReview] = useState([])
     const { product } = UseAuth()
     useEffect(() => {
-        fetch("http://localhost:5000/review")
+        fetch("https://afternoon-bayou-21114.herokuapp.com/review")
         .then(res => res.json())
     .then(data=> setReview(data))
     }, [])

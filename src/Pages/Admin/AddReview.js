@@ -17,7 +17,7 @@ const AddReview = () => {
     const onSubmit = data => {
         data.name = user.displayName 
 
-        fetch("http://localhost:5000/review", {
+        fetch("https://afternoon-bayou-21114.herokuapp.com/review", {
             method: "POST",
             "headers": {
                 "content-type": "application/json"
