@@ -24,7 +24,7 @@ const Login = () => {
         newLoginData[field] = value;
         setLoginData(newLoginData);
     }
-    console.log(loginData);
+
     const handleSubmitData = (e) => {
         e.preventDefault();
         handleSubmit(loginData.email, loginData.password, location, history)

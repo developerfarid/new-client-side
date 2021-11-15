@@ -5,16 +5,16 @@ import UseAuth from '../../Hooks/UseAuth';
 
 
 const AllProduct = () => {
-   
+
     const [orders, setOrders] = useState([])
-    const {user, logOut}= UseAuth()
+    const { user, logOut } = UseAuth()
     const newok = {
-        up:"Approved"
+        up: "Approved"
     }
     useEffect(() => {
         fetch(`https://afternoon-bayou-21114.herokuapp.com/order`).then(res => res.json()).then(data => setOrders(data))
     }, [])
-    console.log(orders);
+
     // useEffect(() => {
     //     fetch(`https://afternoon-bayou-21114.herokuapp.com/order/${user?.email}`).then(res => res.json()).then(data => setOrder(data))
     // }, [])
@@ -26,7 +26,7 @@ const AllProduct = () => {
             title: 'Your Data has been Update',
             showConfirmButton: false,
             timer: 1500
-          })
+        })
     }
     const handleUpdate = (id) => {
         fetch(`https://afternoon-bayou-21114.herokuapp.com/order/${id}`, {
@@ -36,20 +36,20 @@ const AllProduct = () => {
             },
             body: JSON.stringify(newok)
         })
-            .then(ress=> ress.json())
+            .then(ress => ress.json())
             .then(res => {
                 if (res.modifiedCount) {
                     fetch(`https://afternoon-bayou-21114.herokuapp.com/order`)
-                .then(res => res.json())
-                    .then(data => {
-                        setOrders(data)
-                        myAlartForDataAdd()
-                        // window.location.reload()
+                        .then(res => res.json())
+                        .then(data => {
+                            setOrders(data)
+                            myAlartForDataAdd()
+                            // window.location.reload()
 
-                    })
+                        })
                 }
-                
-        })
+
+            })
     }
 
     const handleCancel = (id) => {
@@ -61,77 +61,70 @@ const AllProduct = () => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
-              if (result.isConfirmed) {
+        }).then((result) => {
+            if (result.isConfirmed) {
                 fetch(`https://afternoon-bayou-21114.herokuapp.com/order/${id}`, {
-                    method:"DELETE"
+                    method: "DELETE"
                 })
-                    .then(ress=> ress.json())
+                    .then(ress => ress.json())
                     .then(res => {
-                
-                            const re = orders.filter(item => item._id !== id)
-                            setOrders(re);
-                            
-                       
-                        // window.location.reload()
-                    })
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                      )
-              
-            }
-          })
 
-       
-        
+                        const re = orders.filter(item => item._id !== id)
+                        setOrders(re);
+                    })
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
     }
 
 
-   
+
     return (
         <Container >
-        <Table responsive="xl" striped bordered hover>
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Product Name</th>
-                    <th>Email</th> 
-                    <th>Phone Number</th>
-                    <th>Address</th>
-                    <th>Status</th>
-                    <th>Update</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                {
-                    orders?.map((item, i) => <>
+            <Table responsive="xl" striped bordered hover>
+                <thead>
                     <tr>
-                    <td>{i+1}</td>
-                   
-                  
-                            <td>{item?.name }</td>
-                            <td>{item?.title }</td>
-                   
-                            <td>{item?.email }</td>
-                            <td>{item?.number }</td>
-                            <td>{item?.address }</td>
-                            <td>{item?.status}</td>
-
-                            <td><button className="btn btn-outline-success" onClick={()=> handleUpdate(item?._id)}>Approve Now</button></td>
-                            
-                            <td><button className="btn btn-danger" onClick={()=> handleCancel(item?._id)}>Cancel</button></td>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Product Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Address</th>
+                        <th>Status</th>
+                        <th>Update</th>
+                        <th>Delete</th>
                     </tr>
-                    </>)
-                }
-           
-            </tbody>
-        </Table>
-    </Container>
+                </thead>
+                <tbody>
+
+                    {
+                        orders?.map((item, i) => <>
+                            <tr>
+                                <td>{i + 1}</td>
+
+
+                                <td>{item?.name}</td>
+                                <td>{item?.title}</td>
+
+                                <td>{item?.email}</td>
+                                <td>{item?.number}</td>
+                                <td>{item?.address}</td>
+                                <td>{item?.status}</td>
+
+                                <td><button className="btn btn-outline-success" onClick={() => handleUpdate(item?._id)}>Approve Now</button></td>
+
+                                <td><button className="btn btn-danger" onClick={() => handleCancel(item?._id)}>Cancel</button></td>
+                            </tr>
+                        </>)
+                    }
+
+                </tbody>
+            </Table>
+        </Container>
     );
 };
 

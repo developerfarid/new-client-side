@@ -9,6 +9,7 @@ import AddProduct from './AddProduct';
 import AddReview from './AddReview';
 import AdminRoute from './AdminRoute';
 import AllProduct from './AllProduct';
+import AllProducts from './AllProducts';
 import MakeAdmin from './MakeAdmin';
 import MyOrder from './MyOrder';
 import Pay from './Pay';
@@ -17,7 +18,7 @@ const Admin = () => {
   let { path, url } = useRouteMatch();
   // const { user, logOut,admin } = UseAuth()
   const { admin, logOut } = UseAuth()
-  console.log(admin);
+
  
   return (
     <div className="mt-5">
@@ -33,6 +34,9 @@ const Admin = () => {
             </li>}
             {admin?.role && <li>
               <Link className="btn btn-info m-2 w-100" to={`${url}/order`}>All Order</Link>
+            </li>}
+            {admin?.role && <li>
+              <Link className="btn btn-info m-2 w-100" to={`${url}/allProducts`}>All Product</Link>
             </li>}
             <li>
               <Link className="btn btn-info m-2 w-100" to={`${url}/myorder`}>My Order</Link>
@@ -55,6 +59,9 @@ const Admin = () => {
             </AdminRoute>
             <AdminRoute path={`${path}/order`}>
               <AllProduct />
+            </AdminRoute>
+            <AdminRoute path={`${path}/allProducts`}>
+              <AllProducts />
             </AdminRoute>
             <AdminRoute path={`${path}/product`}>
               <AddProduct />

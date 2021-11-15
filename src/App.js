@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   BrowserRouter as Router, Route, Switch
@@ -8,9 +7,6 @@ import AllDataContext from './Context/AllDataContext';
 import Admin from './Pages/Admin/Admin';
 import Pay from './Pages/Admin/Pay';
 import Footer from './Pages/Footer/Footer';
-// import AddProduct from './Pages/AdminPage/AddProduct/AddProduct';
-// import Admin from './Pages/AdminPage/Admin/Admin';
-// import Pay from './Pages/AdminPage/Admin/Pay';
 import Home from './Pages/HomePage/Home';
 import Login from './Pages/Login/Login';
 import PrivateRoute from './Pages/Login/PrivateRoute ';
@@ -26,40 +22,40 @@ const App = () => {
       <AllDataContext>
         <Router>
           <Headers />
-        <Switch>
-          <Route exact path='/'>
-            <Home />
-          </Route>
-          <Route path='/home'>
-            <Home />
-          </Route>
-          <PrivateRoute path='/pay'>
-            <Pay />
-          </PrivateRoute>
-          <PrivateRoute path='/product/:id'>
-            <Order />
-          </PrivateRoute>
-         
-          <PrivateRoute path='/admin'>
-            <Admin />
-          </PrivateRoute>
-          <Route path='/login'>
-            <Login />
-          </Route>
-          <Route path='/register'>
-            <Register />
-          </Route>
-          <Route path='/productAll'>
-            <MoreProduct />
-          </Route>
-          <Route path='*'>
-            <NotFound />
-          </Route>
+          <Switch>
+            <Route exact path='/'>
+              <Home />
+            </Route>
+            <Route path='/home'>
+              <Home />
+            </Route>
+            <PrivateRoute path='/pay'>
+              <Pay />
+            </PrivateRoute>
+            <PrivateRoute path='/product/:id'>
+              <Order />
+            </PrivateRoute>
+
+            <PrivateRoute path='/admin'>
+              <Admin />
+            </PrivateRoute>
+            <Route path='/login'>
+              <Login />
+            </Route>
+            <Route path='/register'>
+              <Register />
+            </Route>
+            <Route path='/productAll'>
+              <MoreProduct />
+            </Route>
+            <Route path='*'>
+              <NotFound />
+            </Route>
           </Switch>
           <Footer />
-      </Router>
+        </Router>
       </AllDataContext>
-      
+
     </div>
   );
 };

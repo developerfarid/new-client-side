@@ -22,13 +22,13 @@ const [loding, setLoding]= useState(true)
         setLoding(true)
         signInWithPopup(auth, googleProvider)
             .then((result) => {
-               console.log(result);
+              
                 const user = result.user;
-                console.log(user);
+                
                 setUser(user)
-                console.log(user);
+               
                 saveUser(user?.email, user?.displayName, "PUT")
-                console.log(user.email);
+            
                   successAlart()
                 setError("")
                 const destination = location?.state?.from || '/';
@@ -40,11 +40,13 @@ const [loding, setLoding]= useState(true)
     }
 
     useEffect(() => {
+        
         fetch(`https://afternoon-bayou-21114.herokuapp.com/users/${user.email}`)
           .then(res => res.json())
             .then(data => setAdmin(data[0]))
         
-      }, [user?.email])
+        
+      }, [user.email])
     const sentResetPassByEmail = (email) => {
         sendPasswordResetEmail(auth, email)
             .then(() => {
@@ -187,12 +189,12 @@ const [loding, setLoding]= useState(true)
         }, [])
         useEffect(() => {
             fetch("https://afternoon-bayou-21114.herokuapp.com/productAll").then(res => res.json()).then(data => setProductAll(data))
-        }, [])
+        }, [productAll])
         
        
 
         return {
-            product, successAlart, logOutAlart, unSuccessAlart, logOut,message,loding,error,user,registerAlart,handleSubmit,createUser,googleSign,sentResetPassByEmail ,productAll,saveUser,admin
+            product, successAlart, logOutAlart, unSuccessAlart, logOut,message,loding,error,user,registerAlart,handleSubmit,createUser,googleSign,sentResetPassByEmail ,productAll,saveUser,admin,setProductAll
         }
     };
     export default AllData;

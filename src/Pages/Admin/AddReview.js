@@ -5,7 +5,7 @@ import UseAuth from '../../Hooks/UseAuth';
 
 const AddReview = () => {
     const { user } = UseAuth()
-    console.log(user);
+
     const { register, handleSubmit, watch,reset, formState: { errors } } = useForm();
     const registerAlart = () => {
         Swal.fire(

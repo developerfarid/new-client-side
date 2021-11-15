@@ -1,28 +1,25 @@
-import axios from 'axios';
-import Swal from 'sweetalert2';
 import { faStar as Star } from '@fortawesome/free-regular-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import Rating from 'react-rating';
-import { useHistory, useLocation, useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
+import Swal from 'sweetalert2';
 import UseAuth from '../../../Hooks/UseAuth';
-
 const full = <FontAwesomeIcon icon={faStar} />
 const ementy = <FontAwesomeIcon icon={Star} />
-
-
 
 const Order = () => {
     const [pd, setPd] = useState({})
     const { id } = useParams()
-    const { user, order } = UseAuth()
+    const { user} = UseAuth()
     const history = useHistory()
-    console.log(pd);
 
-    const { register, handleSubmit, reset, errors } = useForm(); // initialize the hook
+
+    const { register, handleSubmit, reset } = useForm(); // initialize the hook
     useEffect(() => {
         fetch(`https://afternoon-bayou-21114.herokuapp.com/product/${id}`).then(res => res.json()).then(dataProduct => setPd(dataProduct))
     }, [])
@@ -38,16 +35,12 @@ const Order = () => {
         data.email= user.email
         data.title= pd?.title    
         data.displayName= pd?.displayName    
-
-   
             axios.post("https://afternoon-bayou-21114.herokuapp.com/order", data)
             .then(response => {
                 if (response.data.insertedId) {
                     success()
                     reset()
                     history.push("/pay")
-                    window.location.reload();
-
                 }
             })
         
