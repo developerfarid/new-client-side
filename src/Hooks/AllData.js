@@ -11,8 +11,9 @@ const AllData = () => {
     const [error, setError] = useState("")
     const [product, setProduct] = useState([])
     const [productAll, setProductAll] = useState([])
-    const [order, setOrder] = useState([])
-    const [orderAll, setOrderAll] = useState([])
+ 
+
+    const [admin, setAdmin] = useState([])
 const [loding, setLoding]= useState(true)
     const googleProvider = new GoogleAuthProvider();
     const [message, setMessage] = useState("")
@@ -38,6 +39,12 @@ const [loding, setLoding]= useState(true)
               }).finally(() => setLoding(false))
     }
 
+    useEffect(() => {
+        fetch(`https://afternoon-bayou-21114.herokuapp.com/users/${user.email}`)
+          .then(res => res.json())
+            .then(data => setAdmin(data[0]))
+        
+      }, [user?.email])
     const sentResetPassByEmail = (email) => {
         sendPasswordResetEmail(auth, email)
             .then(() => {
@@ -181,15 +188,11 @@ const [loding, setLoding]= useState(true)
         useEffect(() => {
             fetch("https://afternoon-bayou-21114.herokuapp.com/productAll").then(res => res.json()).then(data => setProductAll(data))
         }, [])
-        useEffect(() => {
-            fetch("https://afternoon-bayou-21114.herokuapp.com/order").then(res => res.json()).then(data => setOrderAll(data))
-        }, [])
-        useEffect(() => {
-            fetch(`https://afternoon-bayou-21114.herokuapp.com/order/${user?.email}`).then(res => res.json()).then(data => setOrder(data))
-        }, [order])
+        
+       
 
         return {
-            product, successAlart, logOutAlart, unSuccessAlart, logOut,message,loding,error,user,registerAlart,handleSubmit,createUser,googleSign,sentResetPassByEmail, order,setOrder,orderAll, setOrderAll ,productAll,saveUser
+            product, successAlart, logOutAlart, unSuccessAlart, logOut,message,loding,error,user,registerAlart,handleSubmit,createUser,googleSign,sentResetPassByEmail ,productAll,saveUser,admin
         }
     };
     export default AllData;

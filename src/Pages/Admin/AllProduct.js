@@ -5,12 +5,19 @@ import UseAuth from '../../Hooks/UseAuth';
 
 
 const AllProduct = () => {
-    const [order2, setOrder2] = useState([])
-    const {user, logOut, orderAll, setOrder, setOrderAll}= UseAuth()
+   
+    const [orders, setOrders] = useState([])
+    const {user, logOut}= UseAuth()
     const newok = {
         up:"Approved"
     }
-    
+    useEffect(() => {
+        fetch(`https://afternoon-bayou-21114.herokuapp.com/order`).then(res => res.json()).then(data => setOrders(data))
+    }, [])
+    console.log(orders);
+    // useEffect(() => {
+    //     fetch(`https://afternoon-bayou-21114.herokuapp.com/order/${user?.email}`).then(res => res.json()).then(data => setOrder(data))
+    // }, [])
 
     const myAlartForDataAdd = () => {
         Swal.fire({
@@ -31,14 +38,16 @@ const AllProduct = () => {
         })
             .then(ress=> ress.json())
             .then(res => {
-                fetch(`https://afternoon-bayou-21114.herokuapp.com/order`)
+                if (res.modifiedCount) {
+                    fetch(`https://afternoon-bayou-21114.herokuapp.com/order`)
                 .then(res => res.json())
                     .then(data => {
-                        setOrder2(data)
+                        setOrders(data)
                         myAlartForDataAdd()
-                        window.location.reload()
+                        // window.location.reload()
 
                     })
+                }
                 
         })
     }
@@ -59,15 +68,19 @@ const AllProduct = () => {
                 })
                     .then(ress=> ress.json())
                     .then(res => {
-                        const re = orderAll.filter(item => item._id !== id)
-                        setOrderAll(re);
+                
+                            const re = orders.filter(item => item._id !== id)
+                            setOrders(re);
+                            
+                       
                         // window.location.reload()
-                })
-              Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-              )
+                    })
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                      )
+              
             }
           })
 
@@ -96,7 +109,7 @@ const AllProduct = () => {
             <tbody>
 
                 {
-                    orderAll.map((item, i) => <>
+                    orders?.map((item, i) => <>
                     <tr>
                     <td>{i+1}</td>
                    

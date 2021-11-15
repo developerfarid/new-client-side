@@ -1,9 +1,10 @@
-import Button from '@restart/ui/esm/Button';
+
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import { Link } from 'react-router-dom';
 import UseAuth from '../../Hooks/UseAuth';
+
 import AddProduct from './AddProduct';
 import AddReview from './AddReview';
 import AdminRoute from './AdminRoute';
@@ -14,27 +15,23 @@ import Pay from './Pay';
 
 const Admin = () => {
   let { path, url } = useRouteMatch();
-  const { user, logOut } = UseAuth()
-  const [admin, setAdmin] = useState([])
-  console.log(admin.role);
-  useEffect(() => {
-    fetch(`https://afternoon-bayou-21114.herokuapp.com/users/${user.email}`)
-      .then(res => res.json())
-      .then(data => setAdmin(data[0]))
-  }, [])
+  // const { user, logOut,admin } = UseAuth()
+  const { admin, logOut } = UseAuth()
+  console.log(admin);
+ 
   return (
     <div className="mt-5">
       <Row>
         <Col xs={12} md={3}>
           <ul className="list-unstyled ml-4">
 
-            {admin.role && <li>
+            {admin?.role && <li>
               <Link className="btn btn-info m-2 w-100" to={`${url}/product`}>Add Product</Link>
             </li>}
-            {admin.role && <li>
+            {admin?.role && <li>
               <Link className="btn btn-info m-2 w-100" to={`${url}/makeAdmin`}>Make Admin</Link>
             </li>}
-            {admin.role && <li>
+            {admin?.role && <li>
               <Link className="btn btn-info m-2 w-100" to={`${url}/order`}>All Order</Link>
             </li>}
             <li>

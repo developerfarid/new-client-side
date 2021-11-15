@@ -17,7 +17,7 @@ const Home = () => {
         .then(res => res.json())
     .then(data=> setReview(data))
     }, [])
-    console.log(review);
+
     return (
         <div>
             <Carousel fade>
@@ -56,7 +56,7 @@ const Home = () => {
                     }
                 </Row>
                 <h1 className="text-center my-4">Review Section</h1>
-                <Row xs={1} md={2} lg={3} className="my-5">
+                <Row  xs={1} md={2} lg={3} >
                    
                     {
                         review.map(item => <Review key={item._id} item={item} />)

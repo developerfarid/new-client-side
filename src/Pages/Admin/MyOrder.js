@@ -6,13 +6,15 @@ import UseAuth from '../../Hooks/UseAuth';
 
 
 const MyOrder = () => {
-  
-    const {user, logOut, order, setOrder}= UseAuth()
+    const [order, setOrder] = useState([])
+    const {user, logOut}= UseAuth()
     const newok = {
         up:"Approved"
     }
     
-
+ useEffect(() => {
+        fetch(`https://afternoon-bayou-21114.herokuapp.com/order/${user?.email}`).then(res => res.json()).then(data => setOrder(data))
+    }, [])
     const myAlartForDataAdd = () => {
         Swal.fire({
             position: 'center',
@@ -22,27 +24,7 @@ const MyOrder = () => {
             timer: 1500
           })
     }
-    const handleUpdate = (id) => {
-        fetch(`https://afternoon-bayou-21114.herokuapp.com/order/${id}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newok)
-        })
-            .then(ress=> ress.json())
-            .then(res => {
-                fetch(`https://afternoon-bayou-21114.herokuapp.com/order`)
-                .then(res => res.json())
-                    .then(data => {
-                        setOrder(data)
-                        myAlartForDataAdd()
-                        window.location.reload()
 
-                    })
-                
-        })
-    }
 
     const handleCancel = (id) => {
         Swal.fire({
@@ -55,7 +37,7 @@ const MyOrder = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
               if (result.isConfirmed) {
-                fetch(`https://afternoon-bayou-21114.herokuapp.com/order/${id}`, {
+                fetch(`http://localhost:5000/order/${id}`, {
                     method:"DELETE"
                 })
                     .then(ress=> ress.json())
@@ -95,7 +77,7 @@ const MyOrder = () => {
             <tbody>
 
                 {
-                    order.map((item, i) => <>
+                    order?.map((item, i) => <>
                     <tr>
                     <td>{i+1}</td>
                    

@@ -11,7 +11,7 @@ const Review = ({ item }) => {
     const element2 = <FontAwesomeIcon icon={Star} />
     const { name, details, rating } = item
     return (
-        <Col>
+        <Col className="mb-4">
             <Card >
 
                 <Card.Body>
