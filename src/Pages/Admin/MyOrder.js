@@ -13,7 +13,7 @@ const MyOrder = () => {
     }
     
  useEffect(() => {
-        fetch(`https://afternoon-bayou-21114.herokuapp.com/order/${user?.email}`).then(res => res.json()).then(data => setOrder(data))
+        fetch(`http://localhost:5000/order/${user?.email}`).then(res => res.json()).then(data => setOrder(data))
     }, [])
     const myAlartForDataAdd = () => {
         Swal.fire({
@@ -58,7 +58,7 @@ const MyOrder = () => {
     }
 
 
-   
+   console.log(order);
     return (
         <Container >
         <Table responsive="xl" striped bordered hover>

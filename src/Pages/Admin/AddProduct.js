@@ -25,7 +25,7 @@ const AddProduct = () => {
     }
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
-        axios.post("https://afternoon-bayou-21114.herokuapp.com/product", data)
+        axios.post("http://localhost:5000/product", data)
             .then(response => {
                 if (response.data.insertedId) {
                     myAlartForDataAdd()

@@ -26,7 +26,7 @@ const Footer = () => {
     }
     
     const onSubmit = data => {
-        axios.post("https://afternoon-bayou-21114.herokuapp.com/newsLetter", data)
+        axios.post("http://localhost:5000/newsLetter", data)
             .then(res => {
             if (res.data.insertedId) {
                 messageDone()
@@ -46,7 +46,7 @@ const Footer = () => {
                 <Row xs={1} sm={2} md={3}>
                     <Col>
                         <div className="footer-item">
-                            <h1>Online Shoe Market</h1>
+                            <h1>Furniture BD </h1>
                             <p>pustfarid333@gmail.com</p>
                             <p>01629094984</p>
                             <p>Manikgonj Dhaka</p>
@@ -56,11 +56,11 @@ const Footer = () => {
                         <div className="footer-item">
                             <h3>Our Recent Posts</h3>
                             <ul className="list-unstyled">
-                                <li>Comeing New Chines Shoe </li>
+                                <li>Comeing New Table </li>
                                 <small>September 10, 2021</small>
                                 <li>New Year Collection!</li>
                                 <small>September 19, 2021</small>
-                                <li>How check a brand new shoe</li>
+                                <li>How check a brand new Chir</li>
                                 <small>September 27, 2021</small>
                             </ul>
                         </div>

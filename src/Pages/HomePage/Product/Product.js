@@ -10,17 +10,17 @@ import { Link } from 'react-router-dom';
 const Product = ({ pd }) => {
     const element = <FontAwesomeIcon icon={faStar} />
     const element2 = <FontAwesomeIcon icon={Star} />
-    const { title, price, url, rating,_id, des } = pd
+    const { key,img,category,detail,brand,star,price,color,name, _id } = pd
 
     return (
         <Col className="my-3">
-            <Card>
-                <Card.Img  variant="top" src={url} />
+            <Card className='h-100'>
+                <Card.Img style={{height:"250px"}} variant="top" src={img} />
                 <Card.Body>
-                    <Card.Title>{title}</Card.Title>
-                    <p>{ des}</p>
-                    <p>{ price}</p>
-                    <p><Rating initialRating={rating} fullSymbol={element} emptySymbol={element2} readonly /></p>
+                    <Card.Title>{name}</Card.Title>
+                    <p>{ detail?.slice(0, 90)}</p>
+                    <p className='d-flex justify-content-between'><span>Price: ${price}</span> <span>Category: {category }</span> </p>
+                    <p className='d-flex justify-content-between'><span>Rating: <Rating initialRating={star} fullSymbol={element} emptySymbol={element2} readonly /></span><span>Brand: { brand}</span></p>
                 </Card.Body>
                 <Card.Footer>
                     <Link to={`/product/${_id}`}>

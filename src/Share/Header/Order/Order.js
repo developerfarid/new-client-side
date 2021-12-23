@@ -1,6 +1,8 @@
 import { faStar as Star } from '@fortawesome/free-regular-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
@@ -18,10 +20,10 @@ const Order = () => {
     const { user} = UseAuth()
     const history = useHistory()
 
-
+console.log(pd);
     const { register, handleSubmit, reset } = useForm(); // initialize the hook
     useEffect(() => {
-        fetch(`https://afternoon-bayou-21114.herokuapp.com/product/${id}`).then(res => res.json()).then(dataProduct => setPd(dataProduct))
+        fetch(`http://localhost:5000/furnitures/${id}`).then(res => res.json()).then(dataProduct => setPd(dataProduct))
     }, [])
     const onSubmit = (data) => {
         const success = () => {
@@ -33,9 +35,10 @@ const Order = () => {
         }
         data.status = "Pending";
         data.email= user.email
-        data.title= pd?.title    
+        data.title= pd?.name   
+        data.price= pd?.price   
         data.displayName= pd?.displayName    
-            axios.post("https://afternoon-bayou-21114.herokuapp.com/order", data)
+            axios.post("http://localhost:5000/order", data)
             .then(response => {
                 if (response.data.insertedId) {
                     success()
@@ -50,13 +53,13 @@ const Order = () => {
             <Row>
                 <Col>
                     <div className="product-information mt-5">
-                    <img className=" img-fluid w-100" src={pd.url} alt="" />
+                    <img className=" img-fluid w-100" src={pd.img} alt="" />
 
                     <h1>{ }</h1>
                     <h3>{pd?.title}  </h3>
-                    <p className="d-flex  justify-content-between">  <span>Price: {pd.price}</span><Rating emptySymbol={ementy} fullSymbol={full} initialRating={pd?.rating} readonly stop="5" /></p>
+                    <p className="d-flex  justify-content-between">  <span>Price: {pd.price}</span><Rating emptySymbol={ementy} fullSymbol={full} initialRating={pd?.star} readonly stop="5" /></p>
                     <h3>Product Overview </h3>
-                    <p>{pd?.des}</p>
+                    <p>{pd?.detail}</p>
                     </div>
                 </Col>
                 <Col>
@@ -73,7 +76,8 @@ const Order = () => {
                     </div>
 
             </Col>
-        </Row>
+            </Row>
+        
     </Container >
     );
 };

@@ -17,7 +17,7 @@ const AllProducts = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://afternoon-bayou-21114.herokuapp.com/productAll/${id}`, {
+                fetch(`http://localhost:5000/productAll/${id}`, {
                     method: "DELETE"
                 })
                     .then(ress => ress.json())

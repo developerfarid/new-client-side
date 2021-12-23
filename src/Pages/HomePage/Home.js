@@ -6,17 +6,18 @@ import Contact from '../Contact/Contact';
 import './Home.css'
 import Review from './Home/Review';
 import Product from './Product/Product';
-import image1 from '../../image/banner7-1.jpg'
-import image2 from '../../image/banner7-12.jpg'
+import image1 from '../../image/posters-in-cozy-apartment-interior-royalty-free-image-943910360-1534189931.jpg'
+import image2 from '../../image/Types-of-wood-used-for-making-furniture-in-India-FB-1200x700-compressed.jpg'
 
 const Home = () => {
     const [review, setReview] = useState([])
     const { product } = UseAuth()
     useEffect(() => {
-        fetch("https://afternoon-bayou-21114.herokuapp.com/review")
+        fetch("http://localhost:5000/review")
         .then(res => res.json())
     .then(data=> setReview(data))
     }, [])
+
 
     return (
         <div>
@@ -29,7 +30,7 @@ const Home = () => {
                     />
                     <Carousel.Caption className="car-middle" >
                         <h3 className="title-car">Sale products </h3>
-                        <h1 className="title-carousel"> NIKE ARI MAX 2021 </h1>
+                        <h1 className="title-carousel"> Camabeds Siller Fabric Sofa </h1>
                         <Button className="btn-info text-white fw-bold mt-4" > Shop Now</Button>
                     </Carousel.Caption>
                 </Carousel.Item>
@@ -42,7 +43,7 @@ const Home = () => {
 
                     <Carousel.Caption className="car-middle" >
                         <h3 className="title-car">Sale products </h3>
-                        <h1 className="title-carousel"> NIKE ARI MAX Pro 2021 </h1>
+                        <h1 className="title-carousel"> NDiva Green and Light Green Chair </h1>
                         <Button className="btn-info text-white fw-bold mt-4" > Shop Now</Button>
                     </Carousel.Caption>
                 </Carousel.Item>

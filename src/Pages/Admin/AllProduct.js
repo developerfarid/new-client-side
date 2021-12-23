@@ -12,7 +12,7 @@ const AllProduct = () => {
         up: "Approved"
     }
     useEffect(() => {
-        fetch(`https://afternoon-bayou-21114.herokuapp.com/order`).then(res => res.json()).then(data => setOrders(data))
+        fetch(`http://localhost:5000/order`).then(res => res.json()).then(data => setOrders(data))
     }, [])
 
     // useEffect(() => {
@@ -29,7 +29,7 @@ const AllProduct = () => {
         })
     }
     const handleUpdate = (id) => {
-        fetch(`https://afternoon-bayou-21114.herokuapp.com/order/${id}`, {
+        fetch(`http://localhost:5000/order/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -39,7 +39,7 @@ const AllProduct = () => {
             .then(ress => ress.json())
             .then(res => {
                 if (res.modifiedCount) {
-                    fetch(`https://afternoon-bayou-21114.herokuapp.com/order`)
+                    fetch(`http://localhost:5000/order`)
                         .then(res => res.json())
                         .then(data => {
                             setOrders(data)
@@ -63,7 +63,7 @@ const AllProduct = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://afternoon-bayou-21114.herokuapp.com/order/${id}`, {
+                fetch(`http://localhost:5000/order/${id}`, {
                     method: "DELETE"
                 })
                     .then(ress => ress.json())

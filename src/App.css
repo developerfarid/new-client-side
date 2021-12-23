@@ -6,6 +6,12 @@
   height: 40vmin;
   pointer-events: none;
 }
+.__PrivateStripeElement {
+  width: 500px !important;
+}
+iframe {
+  width: 500px !important;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

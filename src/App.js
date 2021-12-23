@@ -15,6 +15,7 @@ import Register from './Pages/Register/Register';
 import Headers from './Share/Header/Header';
 import Order from './Share/Header/Order/Order';
 import NotFound from "./Pages/WeOffer/NotFound"
+import CheckOut from './Pages/Admin/CheckoutForm';
 
 const App = () => {
   return (
@@ -44,6 +45,9 @@ const App = () => {
             </Route>
             <Route path='/register'>
               <Register />
+            </Route>
+            <Route path='/checkout'>
+              <CheckOut />
             </Route>
             <Route path='/productAll'>
               <MoreProduct />

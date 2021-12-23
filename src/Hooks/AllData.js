@@ -41,7 +41,7 @@ const [loding, setLoding]= useState(true)
 
     useEffect(() => {
         
-        fetch(`https://afternoon-bayou-21114.herokuapp.com/users/${user.email}`)
+        fetch(`http://localhost:5000/users/${user.email}`)
           .then(res => res.json())
             .then(data => setAdmin(data[0]))
         
@@ -85,7 +85,7 @@ const [loding, setLoding]= useState(true)
         const user = {
          email, displayName
         }
-        fetch("https://afternoon-bayou-21114.herokuapp.com/users", {
+        fetch("http://localhost:5000/users", {
             method: type,
             "headers": {
                 "content-type":"application/json"
@@ -185,10 +185,10 @@ const [loding, setLoding]= useState(true)
         }
 
         useEffect(() => {
-            fetch("https://afternoon-bayou-21114.herokuapp.com/product").then(res => res.json()).then(data => setProduct(data))
+            fetch("http://localhost:5000/furnitures").then(res => res.json()).then(data => setProduct(data))
         }, [])
         useEffect(() => {
-            fetch("https://afternoon-bayou-21114.herokuapp.com/productAll").then(res => res.json()).then(data => setProductAll(data))
+            fetch("http://localhost:5000/furnituresAll").then(res => res.json()).then(data => setProductAll(data))
         }, [productAll])
         
        
